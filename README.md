@@ -1,11 +1,11 @@
-#Sudoku solver
+'#Sudoku solver
 
 This is a simple program reading a textfile containing a sudoku.
 the text file should look something like:
 
-003000245\n
-010000600
-600008000
+003000245 <br>
+010000600</br>
+600008000<br />
 400050000
 200400600
 700509103
