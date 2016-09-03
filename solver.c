@@ -3,7 +3,7 @@
 #include <time.h>
 #define SIZE 9
 #define BOXSIZE 3
-#define NUMBER_OF_SUDOKUS 50
+#define NUMBER_OF_SUDOKUS 1
 
 int ok(char** arr, int row, int col, int k);
 int su_solver(char** arr, int row, int col);
@@ -11,7 +11,7 @@ void err_sys(char* msg);
 
 int main(){
 	FILE* fd;
-	int a, i = 0, k = 0, solved, sumofTopThree = 0, sudNum = 0;
+	int a, i = 0, k = 0, solved, sudNum = 0;
 	char ** arr;
 	clock_t start, end;
 	start = clock();
@@ -24,7 +24,7 @@ int main(){
 			err_sys("Allocation error\0");
 
 	/* Open file */
-	if((fd = fopen("p096_sudoku.txt", "r")) == NULL)
+	if((fd = fopen("sudoku.txt", "r")) == NULL)
 		err_sys("Can't open file");
 
 	/* The 'main' loop. One SuDoku at a time. */
@@ -47,12 +47,12 @@ int main(){
 
 		/* Solving part */
 		if ((solved = su_solver(arr, 0, 0)) < 0){
-			fprintf(stderr, "No solution\n");
-			goto FREE;
+			printf("Sudoku #%d: No solution\n", sudNum+1);
 		}
-		sumofTopThree += 100*(arr[0][0] - 48) + 10*(arr[0][1] - 48) + (arr[0][2] - 48);
 
-		printf("Nr %d Solved!\n", sudNum+1);
+		else{
+			printf("Sudoku #%d: Solved!\n", sudNum+1);
+		}
 		sudNum++;
 	}
 	/*--- End of Su Doku's ---*/
@@ -60,7 +60,6 @@ int main(){
 	/* Print result */
 	end = clock();
 	printf("time: %f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
-	printf("sum: %d\n", sumofTopThree);
 
 	/* Freeing */
 	FREE:
