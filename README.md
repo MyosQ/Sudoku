@@ -1,8 +1,9 @@
 #Sudoku solver
 
-This is a simple program reading a textfile containing a sudoku.
+This is a simple program reading a text file containing a sudoku.
 the text file should look something like:
 
+sudoku 1
 003000245 <br>
 010000600 <br>
 600008000 <br>
@@ -12,5 +13,9 @@ the text file should look something like:
 030607020 <br>
 000400000 <br>
 500006000 <br>
+sudoku 2
+004007010
+...
 
-whers the zeros represent an empty square.
+
+where a zero represent an empty square.
