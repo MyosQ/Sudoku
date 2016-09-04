@@ -3,7 +3,7 @@
 This is a simple program reading a text file containing a sudoku.
 the text file should look something like:
 
-sudoku 1
+sudoku 1 <br>
 003000245 <br>
 010000600 <br>
 600008000 <br>
@@ -13,8 +13,8 @@ sudoku 1
 030607020 <br>
 000400000 <br>
 500006000 <br>
-sudoku 2
-004007010
+sudoku 2 <br>
+004007010<br>
 ...
 
 
