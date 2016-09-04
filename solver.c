@@ -17,7 +17,7 @@ int main(int argc, char** argv){
 	start = clock();
 
 	if(argc != 2){
-		printf("Usage: sudokusolve <textfile>\n");
+		printf("Usage: <program> <textfile>\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -26,10 +26,10 @@ int main(int argc, char** argv){
 		err_sys("Can't open file");
 
 	/* Allocate for 2-d array */
-	if ((arr = calloc(10, sizeof(char*))) == NULL)
+	if ((arr = calloc(SIZE+1, sizeof(char*))) == NULL)
 		err_sys("Allocation error\0");
-	for(a = 0; a < 10; a++)
-		if((arr[a] = calloc(10, sizeof(char))) == NULL)
+	for(a = 0; a < SIZE+1; a++)
+		if((arr[a] = calloc(SIZE+1, sizeof(char))) == NULL)
 			err_sys("Allocation error\0");
 
 	/* The 'main' loop. One SuDoku at a time. */
@@ -57,12 +57,17 @@ int main(int argc, char** argv){
 
 		else{
 			printf("Sudoku #%d: Solved!\n", sudNum+1);
+			for (a = 0; a < SIZE; a++) {
+				fputs(arr[a], stdout);
+				putc('\n', stdout);
+			}
+			putc('\n', stdout);
 		}
 		sudNum++;
 	}
 	/*--- End of Su Doku's ---*/
 
-	/* Print result */
+	/* Print time taken */
 	end = clock();
 	printf("time: %f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
 
